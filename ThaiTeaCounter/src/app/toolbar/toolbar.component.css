@@ -1,0 +1,8 @@
+mat-toolbar {
+    background-color: orange;
+    box-shadow: black 100px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
