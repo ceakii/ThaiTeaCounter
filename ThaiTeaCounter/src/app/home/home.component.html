@@ -5,9 +5,11 @@
     
     <div class="body">
         <div class="buttons">
-            <counterbutton></counterbutton>
-
-            <addbutton></addbutton>
+            <addbutton (incrementCounterEvent)="incrementCounter()">
+            </addbutton>
+            <counterbutton [curCounter]="counter"></counterbutton>
+            <removebutton (decrementCounterEvent)="decrementCounter()">
+            </removebutton>
         </div>
     </div>
 </main>

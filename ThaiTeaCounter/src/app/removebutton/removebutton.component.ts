@@ -4,12 +4,12 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 
 @Component({
-  selector: 'addbutton',
+  selector: 'removebutton',
   imports: [MatIconModule, MatDividerModule, MatButtonModule],
-  templateUrl: './addbutton.component.html',
-  styleUrl: './addbutton.component.css'
+  templateUrl: './removebutton.component.html',
+  styleUrl: './removebutton.component.css'
 })
-export class AddButton {
-  @Output() incrementCounterEvent = new EventEmitter<boolean>();
-  incrementCounter() { this.incrementCounterEvent.emit(true); }
+export class RemoveButton {
+  @Output() decrementCounterEvent = new EventEmitter<boolean>();
+  decrementCounter() { this.decrementCounterEvent.emit(true); }
 }

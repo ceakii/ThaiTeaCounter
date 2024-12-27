@@ -48,7 +48,7 @@ main {
     height: 40%;
 }
 
-.buttons addbutton {
+.buttons addbutton, .buttons removebutton {
     width: 35%;
     height: 25%;
 }
