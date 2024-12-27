@@ -24,6 +24,6 @@ export class HomeComponent {
 
   // Counter functionality
   counter = 0;
-  incrementCounter() { this.counter++; }
-  decrementCounter() { this.counter--; }
+  incrementCounter() { this.counter++; console.log("Counter: " + this.counter) }
+  decrementCounter() { this.counter--; console.log("Counter: " + this.counter) }
 }

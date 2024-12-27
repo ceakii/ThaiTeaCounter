@@ -8,6 +8,7 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    overflow: hidden;
 }
 
 .toolbar {
@@ -23,7 +24,8 @@ main {
     justify-content: center;
     align-items: center;
 
-    background-image: url("/images/thai_tea.png");
+    /* Must add /ThaiTeaCounter to image url on deploy */
+    background-image: url("/ThaiTeaCounter/images/thai_tea.png");
     background-size: 250px 400px;
     background-repeat: no-repeat;
     background-position-x: 33%;
