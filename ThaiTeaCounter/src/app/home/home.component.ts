@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
 import { Toolbar } from '../toolbar/toolbar.component';
-import { CounterButton } from '../counterbutton/counterbutton.component';
-import { AddButton } from '../addbutton/addbutton.component';
-import { RemoveButton } from '../removebutton/removebutton.component';
+import { Counter } from '../counter/counter.component';
 import { ThaiTeaData } from '../thaiteadata';
 
 @Component({
   selector: 'app-home',
-  imports: [Toolbar, CounterButton, AddButton, RemoveButton],
+  imports: [Toolbar, Counter],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -21,9 +19,4 @@ export class HomeComponent {
     day: 25,
     year: 2024
   }
-
-  // Counter functionality
-  counter = 0;
-  incrementCounter() { this.counter++; console.log("Counter: " + this.counter) }
-  decrementCounter() { this.counter--; console.log("Counter: " + this.counter) }
 }

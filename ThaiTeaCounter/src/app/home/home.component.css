@@ -8,7 +8,8 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .toolbar {
@@ -25,32 +26,9 @@ main {
     align-items: center;
 
     /* Must add /ThaiTeaCounter to image url on deploy */
-    background-image: url("/ThaiTeaCounter/images/thai_tea.png");
+    background-image: url("/thai_tea.png");
     background-size: 250px 400px;
     background-repeat: no-repeat;
     background-position-x: 33%;
     background-position-y: center;
-}
-
-.buttons {
-    width: 200px;
-    height: 300px;
-
-    position: relative;
-    left: 100px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.buttons counterbutton {
-    width: 60%;
-    height: 40%;
-}
-
-.buttons addbutton, .buttons removebutton {
-    width: 35%;
-    height: 25%;
 }

@@ -1,0 +1,19 @@
+<div class="buttons">
+    <div class="add-button">
+        <button mat-fab aria-label="add button" (click)="incrementCounter()">
+            <mat-icon>add_circle</mat-icon>
+        </button>
+    </div>
+    <div class="counter-button">
+        <button mat-fab aria-label="counter button">
+            <div class="counter-display">
+                {{ counter }}
+            </div>
+        </button>
+    </div>
+    <div class="remove-button">
+        <button mat-fab aria-label="remove button" (click)="decrementCounter()">
+            <mat-icon>do_not_disturb_on</mat-icon>
+        </button>
+    </div>
+</div>

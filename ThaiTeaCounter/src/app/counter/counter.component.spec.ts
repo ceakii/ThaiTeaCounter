@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RemovebuttonComponent } from './removebutton.component';
+import { CounterComponent } from './counter.component';
 
-describe('RemovebuttonComponent', () => {
-  let component: RemovebuttonComponent;
-  let fixture: ComponentFixture<RemovebuttonComponent>;
+describe('CounterComponent', () => {
+  let component: CounterComponent;
+  let fixture: ComponentFixture<CounterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RemovebuttonComponent]
+      imports: [CounterComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RemovebuttonComponent);
+    fixture = TestBed.createComponent(CounterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
