@@ -12,11 +12,11 @@ main {
     overflow-y: hidden;
 }
 
-.toolbar {
+.toolbar-container {
     width: 80vw;
 }
 
-.body {
+body {
     width: 100%;
     height: 100%;
 
@@ -31,4 +31,10 @@ main {
     background-repeat: no-repeat;
     background-position-x: 33%;
     background-position-y: center;
+}
+
+.counter-container {
+    position: relative;
+    left: 100px;
+    top: 25%;
 }
