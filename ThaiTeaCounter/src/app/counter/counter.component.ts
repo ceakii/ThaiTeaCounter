@@ -10,7 +10,28 @@ import {MatButtonModule} from '@angular/material/button';
   styleUrl: './counter.component.css'
 })
 export class Counter {
-  counter: number = 0;
-  incrementCounter() { this.counter++; }
-  decrementCounter() { if(this.counter > 0) this.counter--; }
+  // Class variables
+  counter: string | null = "0";
+
+  // Reload local storage counter val into class val
+  ngOnInit() {
+    // If counter does not exist in local storage, make one
+    if(localStorage.getItem("thaiTeaCounter") === null)
+      localStorage.setItem("thaiTeaCounter", "0")
+
+    // Intialize counter with local storage's counter val
+    this.counter = localStorage.getItem("thaiTeaCounter");
+  }
+
+  // Counter functions
+  incrementCounter() {
+    // Increment counter and store into local storage
+    this.counter = (Number(this.counter) + 1).toString();
+    localStorage.setItem("thaiTeaCounter", this.counter);
+  }
+  decrementCounter() {
+    // Decrement counter and store into local storage
+    this.counter = (Number(this.counter) - 1).toString();
+    localStorage.setItem("thaiTeaCounter", this.counter);
+  }
 }
