@@ -31,7 +31,9 @@ export class Counter {
   }
   decrementCounter() {
     // Decrement counter and store into local storage
-    this.counter = (Number(this.counter) - 1).toString();
-    localStorage.setItem("thaiTeaCounter", this.counter);
+    if(Number(this.counter) > 0) {
+      this.counter = (Number(this.counter) - 1).toString();
+      localStorage.setItem("thaiTeaCounter", this.counter);
+    }
   }
 }

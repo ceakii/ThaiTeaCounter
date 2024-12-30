@@ -1,7 +1,7 @@
 <mat-toolbar>
-    <span>Thai Tea Counter</span>
-    <span class="spacer"></span>
-    <button mat-icon-button class="login-icon" aria-label="login icon">
+    <span class="title">Thai Tea Counter</span>
+    <button [routerLink]="['/login']" mat-icon-button class="login-button" aria-label="login icon">
+        <span>Login</span>
         <mat-icon>login</mat-icon>
     </button>
 </mat-toolbar>
