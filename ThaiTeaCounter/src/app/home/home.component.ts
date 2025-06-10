@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { Toolbar } from '../toolbar/toolbar.component';
-import { Counter } from '../counter/counter.component';
+import { ToolbarComponent } from '../toolbar/toolbar.component';
+import { CounterComponent } from '../counter/counter.component';
 import { ThaiTeaData } from '../thaiteadata';
 
 @Component({
   selector: 'app-home',
-  imports: [Toolbar, Counter],
+  imports: [ToolbarComponent, CounterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
