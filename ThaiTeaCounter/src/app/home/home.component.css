@@ -26,7 +26,7 @@ main {
     align-items: center;
 
     /* Must add /ThaiTeaCounter to image url on deploy */
-    background-image: url("/thai_tea.png");
+    background-image: url("/ThaiTeaCounter/thai_tea.png");
     background-size: 250px 400px;
     background-repeat: no-repeat;
     background-position-x: 33%;
