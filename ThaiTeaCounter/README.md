@@ -1,5 +1,9 @@
 # ThaiTeaCounter
 
+Developed by ceakii as a post-graduation project
+to keep track of the number of Thai Teas I purchase
+over time.
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
 
 ## Development server
@@ -12,48 +16,33 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Remember to run this if you have outdated dependencies,
+missing files, etc. during development:
 
 ```bash
-ng generate --help
+npm i
 ```
 
-## Building
-
-To build the project run:
+If the thai tea background image is missing on the
+local server, make sure this style is added in
+the Home Component's CSS:
 
 ```bash
-ng build
+background-image: url("/thai_tea.png");
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Deploying to GitHub Pages
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Before deploying to GitHub Pages, don't forget to
+update the Thai Tea BG pic in Home Component's
+CSS so that it appears on the web app:
 
 ```bash
-ng test
+background-image: url("/ThaiTeaCounter/thai_tea.png");
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+To deploy the app to GitHub Pages, run:
 
 ```bash
-ng e2e
+ng deploy
 ```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
