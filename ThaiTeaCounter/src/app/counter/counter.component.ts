@@ -11,8 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
   imports: [
     MatIconModule, 
     MatDividerModule, 
-    MatButtonModule, 
-    DialogComponent
+    MatButtonModule
     ],
   templateUrl: './counter.component.html',
   styleUrl: './counter.component.css'

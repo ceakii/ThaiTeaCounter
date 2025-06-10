@@ -1,6 +1,13 @@
 .dialog-container {
     display: flex;
-    width: 400px;
-    height: 300px;
-    background-color: white;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width: 80vw;
+    height: 80vh;
+    background-image: linear-gradient(to bottom right, white, #E9DCCF);
+}
+
+table {
+  width: 100%;
 }
