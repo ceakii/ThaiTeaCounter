@@ -1,20 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
-import { ThaiTeaData } from '../thaiteadata';
-
-const THAI_TEA_DATA: ThaiTeaData[] = [
-  {date: '06/08/2025', time: '14:25', price: 6.50, place: 'Vanitea'},
-  {date: '06/07/2025', time: '15:56', price: 10.5, place: 'Surf City Squeeze'},
-  {date: '06/05/2025', time: '12:01', price: 8.25, place: 'Omomo'},
-];
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { ThaiTeaData } from '../thaitea/thaiteadata';
+import { ThaiTeaDataService } from '../thaitea/thaiteadata.service';
 
 @Component({
   selector: 'app-dialog',
-  imports: [MatTableModule],
+  imports: [MatTableModule, MatButtonModule, MatIconModule],
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.css'
 })
-export class DialogComponent {
+export class DialogComponent implements OnInit {
   displayedColumns: string[] = ['date', 'time', 'price', 'place'];
-  dataSource = THAI_TEA_DATA;
+  dataSource: ThaiTeaData[] = [];
+
+  constructor (private thaiTeaDataService: ThaiTeaDataService) { }
+
+  ngOnInit(): void {
+    this.dataSource = this.thaiTeaDataService.history;
+  }
+
+  test(): void {
+    console.log(this.thaiTeaDataService.history);
+    console.log(this.thaiTeaDataService.toString(this.thaiTeaDataService.history));
+  }
 }

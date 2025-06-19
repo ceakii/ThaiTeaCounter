@@ -1,13 +1,43 @@
 .dialog-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    width: 80vw;
-    height: 80vh;
-    background-image: linear-gradient(to bottom right, white, #E9DCCF);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  max-height: 60vh;
+  padding: 20px;
+  background-color: orange;
+}
+
+.dialog-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.dialog-header h1 {
+  flex-grow: 3;
+  color: white;
+}
+
+.dialog-header button {
+  background-color: white;
+}
+
+.dialog-table-container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+table, th, td {
+  color: black;
+  background: linear-gradient(to bottom right, white, #E9DCCF);
 }
 
 table {
-  width: 100%;
+  border-collapse: collapse;
 }

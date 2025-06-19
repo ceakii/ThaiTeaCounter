@@ -1,0 +1,31 @@
+TODO (high to low priority):
+- Add logic to convert Date, Time, and Place into more presentable view
+	- Ex: 06_09_25 => 06/09/2025
+	- Ex: 12_00 => 12:00
+	- Ex: Tapioca_Express => Tapioca Express
+- Implement adding data to table
+	- Service method that updates history and cookie
+	- Need to add Date Component from Angular Material
+	- Need to add Time Component from Angular Material
+- Implement removing data to table
+	- Idea: Add column that you can check to remove when decrementing table
+	- Service method that updates history and cookie
+- Add sort feature to Table
+- Finish designing Table modal
+- Need to finish making Table responsive (the table keeps stretching and introducing a horizontal scroll)
+- Readjust placement of Counter and Thai Tea Picture instead of hard-coding it
+
+Current Changes:
+- Changed toolbar's font from local font to global font for whole app
+- Updated Table modal
+- Implemented service to get and pass thai tea data between components
+- Implemented storing data logic
+	- User data is stored in delimited string in thaiTeaHistory cookie
+	- Service converts string into ThaiTeaData for easy data manipulation
+- Added div to home component for getting input from user
+	- Located between Toolbar and Counter
+- Modified CSS for buttons
+	- All buttons (unless overwritten) share a default global width and height
+- Fixed thai tea image and counter so they stay fixed in the center
+- Toolbar no longer variably expands its width
+- Added box shadows to Toolbar and Input Box

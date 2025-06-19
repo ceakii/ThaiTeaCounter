@@ -2,16 +2,29 @@
 
 /*@import 'material-icons/iconfont/material-icons.css';*/
 
+* {
+    font-family: "Oswald", sans-serif;
+    color: white;
+}
+
 html {
     background-image: linear-gradient(to bottom right, white, #E9DCCF);
     background-color: #E9DCCF;
+}
+
+body {
+    margin: 0;
 }
 
 html, body {
     height: 100%;
 }
 
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+.button-container {
+    width: 75px;
+    height: 75px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
