@@ -1,10 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { DialogComponent } from '../dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { CookieService } from 'ngx-cookie-service';
-import { ThaiTeaDataService } from '../thaitea/thaiteadata.service';
+import { DbService } from '../database/db.service';
 
 @Component({
   selector: 'app-counter',
@@ -15,44 +14,42 @@ import { ThaiTeaDataService } from '../thaitea/thaiteadata.service';
   templateUrl: './counter.component.html',
   styleUrl: './counter.component.css'
 })
-export class CounterComponent {
+export class CounterComponent implements OnInit {
   counter: string | null = "0";
 
-  constructor(private cookieService: CookieService,
-    private thaiTeaDataService: ThaiTeaDataService) {
-    // Check if cookie exists, if not create one
-    if(!this.cookieService.check("thaiTeaCounter")) {
-      this.cookieService.set("thaiTeaCounter", "0");
-    }
-  }
+  constructor(private db: DbService) { }
 
-  // Reload cookie counter val into class val
-  ngOnInit() {
-    // Intialize counter with cookie's counter val
-    this.counter = this.cookieService.get("thaiTeaCounter");
+  async ngOnInit(): Promise<void> {
+    // Initialize counter from db
+    console.log("Initializing counter from database...");
+    if ((await this.db.table('counter').toArray()).length <= 0) {
+      console.log("No counter found in database, initializing to 0.");
+      this.counter = "0";
+      await this.db.table('counter').add({ value: 0 });
+    }
   }
 
   // Counter functions
   incrementCounter(): void {
     // Increment counter and store into cookie
     this.counter = (Number(this.counter) + 1).toString();
-    this.cookieService.set("thaiTeaCounter", this.counter);
 
     // Update ThaiTeaDataService history
     // TODO: Create add data function in ThaiTeaDataService
-    this.thaiTeaDataService.history.push({
+    /*
+    this.db.history.push({
       date: "date_here",
       time: "time_here",
       price: 420.69,
       place: "place_here"
     });
+    */
   }
 
   decrementCounter(): void {
     // Decrement counter and store into cookie
     if(Number(this.counter) > 0) {
       this.counter = (Number(this.counter) - 1).toString();
-      this.cookieService.set("thaiTeaCounter", this.counter);
     }
   }
 
