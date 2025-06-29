@@ -1,0 +1,29 @@
+TODO (high to low priority):
+- Figure out how to get app to re-render counter after reading counter from database on init
+- Implement adding data to table
+	- Service methods
+		- Counter
+			- Setter fxn
+		- history
+			- Getter fxns
+			- Setter fxns
+- Implement removing data to table
+	- Idea: Add column that you can check to remove when decrementing table
+	- Service method that updates history and cookie
+- Need to add Time Component from Angular Material in Home Component
+- Add logic to convert Date, Time, and Place into more presentable view
+	- Ex: 06_09_25 => 06/09/2025
+	- Ex: 12_00 => 12:00
+	- Ex: Tapioca_Express => Tapioca Express
+- Add sort feature to Table
+- Finish designing Table modal
+- Need to finish making Table responsive (the table keeps stretching and introducing a horizontal scroll)
+- Readjust placement of Counter and Thai Tea Picture instead of hard-coding it
+
+Current Changes:
+- Switched from utilizing cookies to Dexie database for storing Thai Tea Data
+	- Removed ngx-cookie-service
+- Database contains 2 stores: counter and history
+	- counter stores different thai tea counters (only 1 counter supported right now)
+	- history stores list of thai teas and related stats like price, place, etc.
+- Implemented Getter/Setter for counter
