@@ -18,10 +18,3 @@ TODO (high to low priority):
 - Readjust placement of Counter and Thai Tea Picture instead of hard-coding it
 
 Current Changes:
-- Switched from utilizing cookies to Dexie database for storing Counter and Thai Tea Data
-	- Removed ngx-cookie-service
-- Database contains 2 stores: counter and history
-	- counter stores different thai tea counters (only 1 counter supported right now)
-	- history stores list of thai teas and related stats like price, place, etc.
-- Implemented Getter/Setter for counter
-- Added Observable to reload counter from DB into page view on load
