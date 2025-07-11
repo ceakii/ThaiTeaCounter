@@ -1,9 +1,10 @@
-import { Component, inject, OnInit, NgZone } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { DialogComponent } from '../dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DbService } from '../database/db.service';
+
 
 @Component({
   selector: 'app-counter',
@@ -15,19 +16,17 @@ import { DbService } from '../database/db.service';
   styleUrl: './counter.component.css'
 })
 export class CounterComponent implements OnInit {
-  counter: number = -1;
+  counter: number = 0;
 
-  constructor(
-    private db: DbService,
-    private ngZone: NgZone
-  ) { }
+  constructor(private db: DbService, private cd: ChangeDetectorRef) { }
 
   // Initialize counter from db
-  async ngOnInit(): Promise<void> {
-    const result = await this.db.getCount(0);
-    this.ngZone.run(() => {
-      this.counter = result;
-    });
+  ngOnInit() {
+    this.db.counter$.subscribe(
+      (next: number) => {
+        this.counter = next;
+        this.cd.detectChanges();
+      });
   }
 
   // Counter functions

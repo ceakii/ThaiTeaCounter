@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
-import { ThaiTeaData } from './thaiteadata';
+import { ThaiTeaData } from './thaiteadata';  // Should I keep the interface?
 import { Dexie, Table } from "dexie";
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbService extends Dexie {
+  private _counter = new BehaviorSubject(0);
+  public counter$ = this._counter.asObservable();
+
   constructor() {
     super('ThaiTeaDB');
 
@@ -26,6 +30,8 @@ export class DbService extends Dexie {
       this.table("counter").add({id: 0, count: 0});
     }
     console.log("Initialized counter table in Database");
+
+    this.updateCounter(await this.getCount(0));
   }
 
   async getCount(id: number): Promise<number> {
@@ -48,5 +54,11 @@ export class DbService extends Dexie {
     }
     else
       console.log(`Counter (id=${id}) could not be found/updated`);
+
+    this.updateCounter(value);
+  }
+
+  updateCounter(newCount: number) {
+    this._counter.next(newCount);
   }
 }
