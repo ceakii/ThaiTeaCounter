@@ -74,7 +74,9 @@ export class DbService extends Dexie {
     this.historyCount = await this.table("history").count();
   }
 
-  async populateHistoryView() {
+  async repopulateHistoryView() {
+    this._history = new Subject<ThaiTeaData>;
+    this.history$ = this._history.asObservable();
     const history: ThaiTeaData[] = await this.table("history").toArray();
     history.forEach((item) => {
       this.updateHistory(item);
@@ -82,7 +84,6 @@ export class DbService extends Dexie {
   }
 
   async addData(d: string, t: string, pr: number, pl: string): Promise<void> {
-    console.log(`history count: ${this.historyCount}`)
     await this.table("history").add({
       id: ++this.historyCount,
       date: d,
@@ -102,6 +103,15 @@ export class DbService extends Dexie {
   async removeLastData(): Promise<void> {
     if(this.historyCount)
       await this.table("history").delete(this.historyCount--);
+  }
+
+  async modifyData(id: number, d: string, t: string, pr: number, pl: string): Promise<void> {
+    await this.table("history").update(id, {
+      date: d,
+      time: t,
+      price: pr,
+      place: pl
+    })
   }
 
   // Observables Functions

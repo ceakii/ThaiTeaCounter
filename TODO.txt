@@ -1,8 +1,7 @@
 TODO (high to low priority):
-- Implement removing data to table
-	- TODO: Table needs to re-render after deleting item
-- Implement modifying data in the table
-- Need to add Time Component from Angular Material in Home Component
+- Need to create Time Component from Angular Material in Home Component
+- Implement Input Logic for Date and Time Components
+	- Date and Time needs to send their input to DB service and update history view
 - Add logic to convert Date, Time, and Place into more presentable view
 	- Ex: 06_09_25 => 06/09/2025
 	- Ex: 12_00 => 12:00
