@@ -46,7 +46,7 @@ export class CounterComponent implements OnInit {
 
   // Dialog function
   readonly dialog = inject(MatDialog);
-  openDialog(): void{
+  openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent);
   }
 }

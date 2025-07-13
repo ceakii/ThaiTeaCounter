@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ThaiTeaData } from './thaiteadata';  // Should I keep the interface?
 import { Dexie, Table } from "dexie";
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,22 +9,30 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class DbService extends Dexie {
   private _counter = new BehaviorSubject(0);
   public counter$ = this._counter.asObservable();
+  private _history = new Subject<ThaiTeaData>;
+  public history$ = this._history.asObservable();
+  private historyCount: number = 0;
 
   constructor() {
     super('ThaiTeaDB');
 
     this.version(1).stores({
       counter: 'id, count',
-      history: '++id, date, time, price, place'
+      history: 'id, date, time, price, place'
     });
 
     this.open()
       .then(() => console.log('Database opened successfully'))
       .catch(err => console.log(err.message));
-    this.initializeCounter();
+    this.initializeCounterTable();
+    this.initializeHistoryCount();
   }
 
-  async initializeCounter(): Promise<void> {
+  // #################
+  // Counter Functions
+  // #################
+
+  async initializeCounterTable(): Promise<void> {
     if(await this.table("counter").count() <= 0) {
       console.log("Counter Table not initialized\nCreating new entry for counter");
       this.table("counter").add({id: 0, count: 0});
@@ -58,7 +66,45 @@ export class DbService extends Dexie {
     this.updateCounter(value);
   }
 
-  updateCounter(newCount: number) {
-    this._counter.next(newCount);
+  // #################
+  // History Functions
+  // #################
+
+  async initializeHistoryCount(): Promise<void> {
+    this.historyCount = await this.table("history").count();
   }
+
+  async populateHistoryView() {
+    const history: ThaiTeaData[] = await this.table("history").toArray();
+    history.forEach((item) => {
+      this.updateHistory(item);
+    })
+  }
+
+  async addData(d: string, t: string, pr: number, pl: string): Promise<void> {
+    console.log(`history count: ${this.historyCount}`)
+    await this.table("history").add({
+      id: ++this.historyCount,
+      date: d,
+      time: t,
+      price: pr,
+      place: pl
+    })
+    this.updateHistory({
+      id: this.historyCount,
+      date: d,
+      time: t,
+      price: pr,
+      place: pl
+    })
+  }
+
+  async removeLastData(): Promise<void> {
+    if(this.historyCount)
+      await this.table("history").delete(this.historyCount--);
+  }
+
+  // Observables Functions
+  updateCounter(newCount: number): void { this._counter.next(newCount); }
+  updateHistory(data: ThaiTeaData) { this._history.next(data); }
 }

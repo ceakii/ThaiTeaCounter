@@ -1,12 +1,7 @@
 TODO (high to low priority):
-- Implement adding data to table
-	- Service methods
-		- history
-			- Getter fxns
-			- Setter fxns
 - Implement removing data to table
-	- Idea: Add column that you can check to remove when decrementing table
-	- Service method that updates history and cookie
+	- TODO: Table needs to re-render after deleting item
+- Implement modifying data in the table
 - Need to add Time Component from Angular Material in Home Component
 - Add logic to convert Date, Time, and Place into more presentable view
 	- Ex: 06_09_25 => 06/09/2025
