@@ -2,8 +2,13 @@
     <div class="dialog-header">
         <h1 mat-dialog-title>History</h1>
         <div class="add-button">
-            <button mat-fab aria-label="add button" (click)="test()">
+            <button mat-fab aria-label="add button" (click)="addData()">
                 <mat-icon>add_circle</mat-icon>
+            </button>
+        </div>
+        <div class="add-button">
+            <button mat-fab aria-label="remove button" (click)="removeLastData()">
+                <mat-icon>remove_circle</mat-icon>
             </button>
         </div>
     </div>

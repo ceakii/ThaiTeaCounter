@@ -27,14 +27,20 @@ export class DialogComponent implements OnInit {
   }
 
   // Adds data to the DB and table, and re-render's view
-  addData(d: string, t: string, pr: number, pl: string): void {
-    this.db.addData(d, t, pr, pl);
-    console.log("Added data to the DB and table")
+  //addData(d: string, t: string, pr: number, pl: string): void {
+  addData() {
+    // TODO: Need to input data into this fxn
+    //this.db.addData(d, t, pr, pl);
+    this.db.addData("test", "test", 0, "test");
+    console.log("Added data to the DB and table");
   }
 
   // Removes the last data from the table and re-render's view
   removeLastData(): void {
     this.db.removeLastData();
+    this.dataSource.pop();
+    const temp: ThaiTeaData[] = this.dataSource.slice();
+    this.dataSource = temp;
     console.log("Removed the latest data from the DB and table");
   }
 
