@@ -12,7 +12,7 @@ import { DbService } from '../database/db.service';
   styleUrl: './history.component.css'
 })
 export class HistoryComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'date', 'time', 'price', 'place'];
+  displayedColumns: string[] = ['id', 'date', 'price', 'place'];
   dataSource: ThaiTeaData[] = [];
 
   constructor (private db: DbService) { }
@@ -31,7 +31,7 @@ export class HistoryComponent implements OnInit {
   //addData(d: string, t: string, pr: number, pl: string): void {
   addData() {
     //this.db.addData(d, t, pr, pl);
-    this.db.addData("test", "test", 0, "test");
+    this.db.addData(new Date(), 0, "test");
     console.log("(FINISH INPUT LATER) Added data to the DB and table");
   }
 
@@ -48,11 +48,10 @@ export class HistoryComponent implements OnInit {
   //modifyData(id: number, date: string, time: string, price: number, place: string): void {
   modifyData() {
     //this.db.modifyData(id, date, time, price, place);
-    this.db.modifyData(2, "modified", "modified", 1, "modified");
+    this.db.modifyData(2, new Date(), 1, "modified");
     this.dataSource[1] = {
       id: 2,
-      date: "modified",
-      time: "modified",
+      date: new Date(),
       price: 1,
       place: "modified"
     };

@@ -18,7 +18,7 @@ export class DbService extends Dexie {
 
     this.version(1).stores({
       counter: 'id, count',
-      history: 'id, date, time, price, place'
+      history: 'id, date, price, place'
     });
 
     this.open()
@@ -83,32 +83,32 @@ export class DbService extends Dexie {
     })
   }
 
-  async addData(d: string, t: string, pr: number, pl: string): Promise<void> {
+  async addData(d: Date, pr: number, pl: string): Promise<void> {
     await this.table("history").add({
       id: ++this.historyCount,
       date: d,
-      time: t,
       price: pr,
       place: pl
     })
     this.updateHistory({
       id: this.historyCount,
       date: d,
-      time: t,
       price: pr,
       place: pl
     })
+    await this.setCount(0, await this.getCount(0) + 1);
   }
 
   async removeLastData(): Promise<void> {
-    if(this.historyCount)
+    if(this.historyCount) {
       await this.table("history").delete(this.historyCount--);
+      await this.setCount(0, await this.getCount(0) - 1);
+    }
   }
 
-  async modifyData(id: number, d: string, t: string, pr: number, pl: string): Promise<void> {
+  async modifyData(id: number, d: Date, pr: number, pl: string): Promise<void> {
     await this.table("history").update(id, {
       date: d,
-      time: t,
       price: pr,
       place: pl
     })
@@ -116,5 +116,5 @@ export class DbService extends Dexie {
 
   // Observables Functions
   updateCounter(newCount: number): void { this._counter.next(newCount); }
-  updateHistory(data: ThaiTeaData) { this._history.next(data); }
+  updateHistory(data: ThaiTeaData): void { this._history.next(data); }
 }

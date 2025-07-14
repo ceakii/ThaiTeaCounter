@@ -1,7 +1,6 @@
 export interface ThaiTeaData {
   id: number;
-  date: string;
-  time: string;
+  date: Date;
   price: number;
   place: string;
 }

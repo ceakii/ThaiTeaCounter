@@ -1,18 +1,13 @@
 TODO (high to low priority):
-- Send data from ThaiTeaForm to DB and Table
-- Add logic to convert Date, Time, and Place into more presentable view
-	- Ex: 06_09_25 => 06/09/2025
-	- Ex: 12_00 => 12:00
-	- Ex: Tapioca_Express => Tapioca Express
+- Add pagination to table since table is capped around 8 before it stretches into oblivion
 - Add sort feature to Table
 - Finish designing Table modal
 - Need to finish making Table responsive (the table keeps stretching and introducing a horizontal scroll)
-- Readjust placement of Counter and Thai Tea Picture instead of hard-coding it
+- Make horizontal view of thai tea counter
 
 Current Changes:
-- Renamed Dialog component to History
-- Created new dialog component called "ThaiTeaForm" that allows users to add specific thai tea to history
-- Added Datepicker, Timepicker, and Input material components to ThaiTeaForm modal
-- Replaced old Datepicker component on Home page with new button that opens ThaiTeaForm dialog
-- Styled ThaiTeaForm modal
-- Implemented Input logic in ThaiTeaForm (Not connected to other components yet***)
+- Adding/Removing data to history automatically updates counter respectively
+- Incrementing the counter adds default data to history
+- Decrementing the counter removes last data from history
+- Submitting the Thai Tea Form adds specific data to history and updates counter respectively
+- Removed time property from history (time is in date)

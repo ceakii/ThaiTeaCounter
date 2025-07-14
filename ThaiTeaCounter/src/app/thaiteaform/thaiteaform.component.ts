@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { DbService } from '../database/db.service';
 
 @Component({
   selector: 'app-thaiteaform',
@@ -28,15 +29,21 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class ThaiTeaFormComponent {
   thaiTeaForm = new FormGroup({
-    date: new FormControl<Date | null>(null, Validators.required),
-    price: new FormControl<number | null>(null, Validators.required),
-    place: new FormControl<string | null>(null, Validators.required)
+    date: new FormControl<Date>(new Date(), Validators.required),
+    time: new FormControl<Date>(new Date(), Validators.required),
+    price: new FormControl<number>(0, Validators.required),
+    place: new FormControl<string>("not specified", Validators.required)
   })
 
+  constructor(private db: DbService) { }
+
   onSubmit() {
-    console.log("Sending the following data:");
-    console.log(`Date: ${this.thaiTeaForm.value.date}`);
-    console.log(`Price: ${this.thaiTeaForm.value.price}`);
-    console.log(`Place: ${this.thaiTeaForm.value.place}`);
+    let fullDate: Date = this.thaiTeaForm.value.date ?? new Date();
+    fullDate.setHours(Number(this.thaiTeaForm.value.time?.getHours()));
+    fullDate.setMinutes(Number(this.thaiTeaForm.value.time?.getMinutes()));
+    this.db.addData(fullDate,
+      Number(this.thaiTeaForm.value.price),
+      String(this.thaiTeaForm.value.place)
+    );
   }
 }

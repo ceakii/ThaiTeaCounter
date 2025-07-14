@@ -8,7 +8,7 @@
         </mat-form-field>
         <mat-form-field>
             <mat-label>Time of Purchase</mat-label>
-            <input matInput [matTimepicker]="timepicker" formControlName="date">
+            <input matInput [matTimepicker]="timepicker" formControlName="time">
             <mat-timepicker #timepicker/>
             <mat-timepicker-toggle [for]="timepicker" matSuffix/>
         </mat-form-field>
@@ -20,9 +20,6 @@
             <mat-label>Place of Purchase</mat-label>
             <input matInput placeholder="Ex. Vanitea" formControlName="place">
         </mat-form-field>
-        <p>Date: {{thaiTeaForm.value.date}}</p>
-        <p>Price: {{thaiTeaForm.value.price}}</p>
-        <p>Place: {{thaiTeaForm.value.place}}</p>
     </form>
     <div class="button-container">
         <button

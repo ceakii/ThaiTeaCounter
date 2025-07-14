@@ -32,14 +32,14 @@ export class CounterComponent implements OnInit {
   async incrementCounter(): Promise<void> {
     // Increment counter and store into database
     ++this.counter;
-    await this.db.setCount(0, this.counter);
+    await this.db.addData(new Date(), 0, "not specified");
   }
 
   async decrementCounter(): Promise<void> {
     // Decrement counter and store into database
     if(Number(this.counter) > 0) {
       --this.counter;
-      await this.db.setCount(0, this.counter);
+      await this.db.removeLastData();
     }
   }
 
