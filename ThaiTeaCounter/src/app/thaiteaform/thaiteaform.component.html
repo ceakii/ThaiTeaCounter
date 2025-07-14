@@ -1,0 +1,37 @@
+<div class="input-container">
+    <form class="form-container" [formGroup]="thaiTeaForm">
+        <mat-form-field>
+            <mat-label>Date of Purchase</mat-label>
+            <input matInput [matDatepicker]="datepicker" formControlName="date">
+            <mat-datepicker #datepicker/>
+            <mat-datepicker-toggle [for]="datepicker" matSuffix/>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Time of Purchase</mat-label>
+            <input matInput [matTimepicker]="timepicker" formControlName="date">
+            <mat-timepicker #timepicker/>
+            <mat-timepicker-toggle [for]="timepicker" matSuffix/>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Price</mat-label>
+            <input matInput placeholder="Ex. 6.50" formControlName="price">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Place of Purchase</mat-label>
+            <input matInput placeholder="Ex. Vanitea" formControlName="place">
+        </mat-form-field>
+        <p>Date: {{thaiTeaForm.value.date}}</p>
+        <p>Price: {{thaiTeaForm.value.price}}</p>
+        <p>Place: {{thaiTeaForm.value.place}}</p>
+    </form>
+    <div class="button-container">
+        <button
+        mat-fab
+        class="continue-button"
+        [disabled]="!thaiTeaForm.valid"
+        (click)="onSubmit()"
+        >
+            <mat-icon>arrow_forward</mat-icon>
+        </button>
+    </div>
+</div>

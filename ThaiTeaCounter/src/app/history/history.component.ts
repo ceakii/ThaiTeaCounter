@@ -6,12 +6,12 @@ import { ThaiTeaData } from '../database/thaiteadata';
 import { DbService } from '../database/db.service';
 
 @Component({
-  selector: 'app-dialog',
+  selector: 'app-history',
   imports: [MatTableModule, MatButtonModule, MatIconModule],
-  templateUrl: './dialog.component.html',
-  styleUrl: './dialog.component.css'
+  templateUrl: './history.component.html',
+  styleUrl: './history.component.css'
 })
-export class DialogComponent implements OnInit {
+export class HistoryComponent implements OnInit {
   displayedColumns: string[] = ['id', 'date', 'time', 'price', 'place'];
   dataSource: ThaiTeaData[] = [];
 

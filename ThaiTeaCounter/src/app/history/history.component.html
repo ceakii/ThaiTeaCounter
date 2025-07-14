@@ -1,5 +1,5 @@
-<div class="dialog-container">
-    <div class="dialog-header">
+<div class="history-container">
+    <div class="history-header">
         <h1 mat-dialog-title>History</h1>
         <div class="add-button">
             <button mat-fab aria-label="add button" (click)="addData()">
@@ -17,7 +17,7 @@
             </button>
         </div>
     </div>
-    <div class="dialog-table-container">
+    <div class="history-table-container">
         <table mat-table [dataSource]="dataSource" class="table">
             <!-- ID Column -->
             <ng-container matColumnDef="id">

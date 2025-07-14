@@ -1,7 +1,5 @@
 TODO (high to low priority):
-- Need to create Time Component from Angular Material in Home Component
-- Implement Input Logic for Date and Time Components
-	- Date and Time needs to send their input to DB service and update history view
+- Send data from ThaiTeaForm to DB and Table
 - Add logic to convert Date, Time, and Place into more presentable view
 	- Ex: 06_09_25 => 06/09/2025
 	- Ex: 12_00 => 12:00
@@ -12,3 +10,9 @@ TODO (high to low priority):
 - Readjust placement of Counter and Thai Tea Picture instead of hard-coding it
 
 Current Changes:
+- Renamed Dialog component to History
+- Created new dialog component called "ThaiTeaForm" that allows users to add specific thai tea to history
+- Added Datepicker, Timepicker, and Input material components to ThaiTeaForm modal
+- Replaced old Datepicker component on Home page with new button that opens ThaiTeaForm dialog
+- Styled ThaiTeaForm modal
+- Implemented Input logic in ThaiTeaForm (Not connected to other components yet***)

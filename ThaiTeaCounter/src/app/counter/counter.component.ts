@@ -1,10 +1,9 @@
 import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { DialogComponent } from '../dialog/dialog.component';
+import { HistoryComponent } from '../history/history.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DbService } from '../database/db.service';
-
 
 @Component({
   selector: 'app-counter',
@@ -47,6 +46,6 @@ export class CounterComponent implements OnInit {
   // Dialog function
   readonly dialog = inject(MatDialog);
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogComponent);
+    const dialogRef = this.dialog.open(HistoryComponent);
   }
 }
