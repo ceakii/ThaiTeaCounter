@@ -8,7 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { DbService } from '../database/db.service';
+import { db } from '../database/db.service';
 
 @Component({
   selector: 'app-thaiteaform',
@@ -32,16 +32,15 @@ export class ThaiTeaFormComponent {
     date: new FormControl<Date>(new Date(), Validators.required),
     time: new FormControl<Date>(new Date(), Validators.required),
     price: new FormControl<number>(0, Validators.required),
-    place: new FormControl<string>("not specified", Validators.required)
+    place: new FormControl<string>("", Validators.required)
   })
 
-  constructor(private db: DbService) { }
-
+  // Adds form data into DB and updates counter + history
   onSubmit() {
     let fullDate: Date = this.thaiTeaForm.value.date ?? new Date();
     fullDate.setHours(Number(this.thaiTeaForm.value.time?.getHours()));
     fullDate.setMinutes(Number(this.thaiTeaForm.value.time?.getMinutes()));
-    this.db.addData(fullDate,
+    db.addData(fullDate,
       Number(this.thaiTeaForm.value.price),
       String(this.thaiTeaForm.value.place)
     );

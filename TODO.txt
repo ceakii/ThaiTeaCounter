@@ -1,13 +1,14 @@
 TODO (high to low priority):
-- Add pagination to table since table is capped around 8 before it stretches into oblivion
-- Add sort feature to Table
+- Add reset data button
+	- Add dialog to confirm reset
+- Add a way to delete a specific thai tea
 - Finish designing Table modal
 - Need to finish making Table responsive (the table keeps stretching and introducing a horizontal scroll)
 - Make horizontal view of thai tea counter
 
 Current Changes:
-- Adding/Removing data to history automatically updates counter respectively
-- Incrementing the counter adds default data to history
-- Decrementing the counter removes last data from history
-- Submitting the Thai Tea Form adds specific data to history and updates counter respectively
-- Removed time property from history (time is in date)
+- Properly refactored Observeables in DB.service and History component
+- Exported singleton instance of DB instead of declaring new private DB for each component
+- Implemented table pagination in history
+- Adjusted history table container so table doesn't overflow the dialog
+- Implemented table sorting (click a header to sort)

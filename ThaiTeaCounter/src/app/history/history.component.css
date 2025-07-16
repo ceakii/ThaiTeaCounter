@@ -3,8 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 80vw;
-  max-height: 60vh;
+  height: 400px;
   padding: 20px;
   background-color: orange;
 }
@@ -27,15 +26,15 @@
 }
 
 .history-table-container {
-  width: 100%;
-  height: 100%;
+  flex: 1 1 auto;
+  overflow: auto;
   justify-content: center;
   align-items: center;
 }
 
-table, th, td {
-  color: black;
-  background: linear-gradient(to bottom right, white, #E9DCCF);
+table, th, td, mat-paginator {
+  color: white;
+  background: black;
 }
 
 table {
